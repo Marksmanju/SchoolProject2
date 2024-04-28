@@ -1,4 +1,4 @@
-package org.example.objects;
+/*package org.example.objects;
 
 import org.example.Game;
 
@@ -9,8 +9,11 @@ public class Main {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new Game();
+                //new Game();
+                Game game = new Game(); //Creates a new game and window
+                game.startGameThread(); //Starts the game loop
             }
         });
     }
 }
+*/

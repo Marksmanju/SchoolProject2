@@ -1,8 +1,9 @@
-package org.example;
+/*package org.example;
 
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
 
 
 public class KeyManager implements KeyListener {
@@ -56,4 +57,20 @@ public class KeyManager implements KeyListener {
 
 
     }
-}
+
+    public boolean isUpPressed() {
+        return upPressed;
+    }
+
+    public boolean isDownPressed() {
+        return downPressed;
+    }
+
+    public boolean isLeftPressed() {
+        return leftPressed;
+    }
+
+    public boolean isRightPressed() {
+        return rightPressed;
+    }
+}*/
