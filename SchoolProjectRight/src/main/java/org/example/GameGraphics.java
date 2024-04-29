@@ -1,5 +1,6 @@
 package org.example;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.Color;
@@ -34,12 +35,15 @@ public class GameGraphics extends JFrame{
     public class Draw extends JPanel {
         public void paintComponent(Graphics g) { // draws graphics, like the draw event in GMS2
             super.paintComponent(g);
+
             Graphics2D g2 = (Graphics2D) g; // Graphics2D class extends the Grapgics class to provide more sophisticated control over geometrz, coordinta transformations, color management, and text layout.
             setBackground((Color.BLACK)); // background color of the window
             //g2.setColor(Color.BLACK); // guess what is sets the color of the graphic
 
-            g2.setColor(logic.player.getColor()); // guess what is sets the color of the graphic
-            g2.fillRect(logic.player.getCoord().x,logic.player.getCoord().y,tileSize,tileSize); //fills the rectangle, (x of the object, y of the object, xscale of object, y scale of object)
+            //g2.setColor(Color.cyan); // guess what is sets the color of the graphic
+            //g2.fillRect(logic.player.getCoord().x,logic.player.getCoord().y,tileSize,tileSize); //fills the rectangle, (x of the object, y of the object, xscale of object, y scale of object)
+
+            g2.drawImage(logic.player.getImage(),logic.player.getCoord().x,logic.player.getCoord().y,tileSize,tileSize,null);
 
             g2.dispose(); // Dispose of this graphics context and release any system resources that is it using
         }

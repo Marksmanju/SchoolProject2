@@ -2,17 +2,22 @@ package org.example.objects;
 
 import org.example.GameGraphics;
 
+import javax.swing.*;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class GameObject {
     protected Coordinates coord;
     protected int height;
     protected int width;
-    public GameObject(int x, int y){
+    protected Image image;
+    public GameObject(int x, int y, String url){
         this.coord = new Coordinates(x,y);
-        this.height = height;
-        this.width = width;
+        ImageIcon ii = new ImageIcon(getClass().getResource("/" + url));
+        this.image = ii.getImage();
 
+        this.width = ii.getIconWidth();
+        this.height = ii.getIconHeight();
     }
     public Coordinates getCoord() {
         return coord;
@@ -52,6 +57,11 @@ public class GameObject {
         this.width = width;
     }
 
+    public Image getImage() {
+        return image;
+    }
 
-
+    public void setImage(Image image) {
+        this.image = image;
+    }
 }

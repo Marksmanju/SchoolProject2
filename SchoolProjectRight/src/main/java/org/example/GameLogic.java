@@ -29,7 +29,7 @@ public class GameLogic {
     }
 
     public void initialize(){
-        player = new Player(10, 10, Color.CYAN);
+        player = new Player(10, 10, "boy_down_1.png");
         System.out.println("Game is initilized");
     }
 
