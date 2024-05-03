@@ -1,5 +1,7 @@
 package org.example;
 
+import org.example.objects.Tile;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -24,7 +26,7 @@ public class GameGraphics extends JFrame{
         add(draw);
         this.logic = logic;
         setSize(scrWidth, scrHeight);
-        setLocationRelativeTo(null);
+        setLocationRelativeTo(null); // sets location of the window. Null makes it in the middle of the screen
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
         setVisible(true);
@@ -35,7 +37,7 @@ public class GameGraphics extends JFrame{
     public class Draw extends JPanel {
         public void paintComponent(Graphics g) { // draws graphics, like the draw event in GMS2
             super.paintComponent(g);
-
+            Tile tile = new Tile(0,0,"green.png");
             Graphics2D g2 = (Graphics2D) g; // Graphics2D class extends the Grapgics class to provide more sophisticated control over geometrz, coordinta transformations, color management, and text layout.
             setBackground((Color.BLACK)); // background color of the window
             //g2.setColor(Color.BLACK); // guess what is sets the color of the graphic
@@ -44,7 +46,7 @@ public class GameGraphics extends JFrame{
             //g2.fillRect(logic.player.getCoord().x,logic.player.getCoord().y,tileSize,tileSize); //fills the rectangle, (x of the object, y of the object, xscale of object, y scale of object)
 
             g2.drawImage(logic.player.getImage(),logic.player.getCoord().x,logic.player.getCoord().y,tileSize,tileSize,null);
-
+            g2.drawImage()
             g2.dispose(); // Dispose of this graphics context and release any system resources that is it using
         }
 
@@ -55,7 +57,7 @@ public class GameGraphics extends JFrame{
         frame.setLocationRelativeTo(null);
     }
 
-    public void render(GameLogic logic) {
+    public void render(GameLogic logic) { //renders the graphics
         this.logic = logic;
         repaint();
     }

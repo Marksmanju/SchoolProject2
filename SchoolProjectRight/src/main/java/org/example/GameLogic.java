@@ -38,19 +38,19 @@ public class GameLogic {
 
         if(game.upPressed){
             player.direction = "up";
-            player.getCoord().y -= 3; // Update y-coordinate for moving up
+            //player.getCoord().y -= 3; // Update y-coordinate for moving up
         }
         else if(game.downPressed){
             player.direction = "down";
-            player.getCoord().y += 3 ;// Update y-coordinate for moving down
+            //player.getCoord().y += 3 ;// Update y-coordinate for moving down
         }
         else if(game.leftPressed){
             player.direction = "left";
-            player.getCoord().x -= 3; // Update x-coordinate for moving left
+            //player.getCoord().x -= 3; // Update x-coordinate for moving left
         }
         else if(game.rightPressed){
             player.direction = "right";
-            player.getCoord().x += 3; // Update x-coordinate for moving right
+            //player.getCoord().x += 3; // Update x-coordinate for moving right
         }
 
 

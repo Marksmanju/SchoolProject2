@@ -29,7 +29,7 @@ public class Game extends Thread{
     public Game() {
         logic = new GameLogic(this);
         graphics = new GameGraphics(logic);
-        logic.initialize();
+        logic.initialize(); // Initilazies all the logic code in logic initiliaze
         graphics.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
@@ -43,24 +43,28 @@ public class Game extends Thread{
                 if((code == KeyEvent.VK_W) || (code == KeyEvent.VK_UP)){
                     upPressed = true;
                     logic.player.setColor(Color.red);
+                    logic.player.setY(logic.player.getY() - 50);
                     //logic.player.direction = "up";
                     //logic.player.getCoord().y -= 10; // Update y-coordinate for moving up
                 }
                 if((code == KeyEvent.VK_S) || (code == KeyEvent.VK_DOWN)){
                     downPressed = true;
                     logic.player.setColor(Color.blue);
+                    logic.player.setY(logic.player.getY() + 50);
                     //logic.player.direction = "down";
                     //logic.player.getCoord().y += 10; // Update y-coordinate for moving up
                 }
                 if((code == KeyEvent.VK_A) || (code == KeyEvent.VK_LEFT)){
                     leftPressed = true;
                     logic.player.setColor(Color.yellow);
+                    logic.player.setX(logic.player.getX() - 50);
                     //logic.player.direction = "left";
                     //logic.player.getCoord().x -= 10; // Update y-coordinate for moving up
                 }
                 if((code == KeyEvent.VK_D) || (code == KeyEvent.VK_RIGHT)){
                     rightPressed = true;
                     logic.player.setColor(Color.GREEN);
+                    logic.player.setX(logic.player.getX() + 50);
                     //logic.player.direction = "right";
                     //logic.player.getCoord().x += 10; // Update y-coordinate for moving up
                 }
@@ -134,7 +138,7 @@ public class Game extends Thread{
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            Game game = new Game();
+            Game game = new Game(); // starts the game Thread ie. starts the game loop
             game.startGameThread();
         });
     }

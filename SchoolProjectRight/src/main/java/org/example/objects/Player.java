@@ -94,4 +94,8 @@ public class Player extends GameObject {
     public void setColor(Color color) {
         this.color = color;
     }
+
+    public void setActualX(){
+        setX(getX() + 20);
+    }
 }
