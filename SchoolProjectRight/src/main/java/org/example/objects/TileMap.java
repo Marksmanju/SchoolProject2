@@ -1,6 +1,6 @@
 package org.example.objects;
 
-public class TileMap {
+/*public class TileMap {
     private Tile[][] tiles;
 
     public TileMap(int width, int height) {
@@ -19,4 +19,4 @@ public class TileMap {
 
     }
 
-}
+}*/

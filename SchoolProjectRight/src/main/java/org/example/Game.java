@@ -39,32 +39,40 @@ public class Game extends Thread{
             @Override
             public void keyPressed(KeyEvent e) {
                 int code = e.getKeyCode();
-
+                int steps = 128;
                 if((code == KeyEvent.VK_W) || (code == KeyEvent.VK_UP)){
                     upPressed = true;
                     logic.player.setColor(Color.red);
-                    logic.player.setY(logic.player.getY() - 50);
+                    if(!((logic.player.getY() - 96) < 0)){
+                        logic.player.setY(logic.player.getY() - steps);
+                    }
                     //logic.player.direction = "up";
                     //logic.player.getCoord().y -= 10; // Update y-coordinate for moving up
                 }
                 if((code == KeyEvent.VK_S) || (code == KeyEvent.VK_DOWN)){
                     downPressed = true;
                     logic.player.setColor(Color.blue);
-                    logic.player.setY(logic.player.getY() + 50);
+                    if(!((logic.player.getY() + 96) > 384)){
+                        logic.player.setY(logic.player.getY() + steps);
+                    }
                     //logic.player.direction = "down";
                     //logic.player.getCoord().y += 10; // Update y-coordinate for moving up
                 }
                 if((code == KeyEvent.VK_A) || (code == KeyEvent.VK_LEFT)){
                     leftPressed = true;
                     logic.player.setColor(Color.yellow);
-                    logic.player.setX(logic.player.getX() - 50);
+                    if(!((logic.player.getX() - 96) < 0)){
+                        logic.player.setX(logic.player.getX() - steps);
+                    }
                     //logic.player.direction = "left";
                     //logic.player.getCoord().x -= 10; // Update y-coordinate for moving up
                 }
                 if((code == KeyEvent.VK_D) || (code == KeyEvent.VK_RIGHT)){
                     rightPressed = true;
                     logic.player.setColor(Color.GREEN);
-                    logic.player.setX(logic.player.getX() + 50);
+                    if(!((logic.player.getX() + 96) > 384)){
+                        logic.player.setX(logic.player.getX() + steps);
+                    }
                     //logic.player.direction = "right";
                     //logic.player.getCoord().x += 10; // Update y-coordinate for moving up
                 }
