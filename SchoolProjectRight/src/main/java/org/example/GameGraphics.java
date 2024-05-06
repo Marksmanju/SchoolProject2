@@ -35,6 +35,8 @@ public class GameGraphics extends JFrame{
 
     }
 
+
+
     public class Draw extends JPanel {
         public void paintComponent(Graphics g) { // draws graphics, like the draw event in GMS2
             super.paintComponent(g);
@@ -61,19 +63,30 @@ public class GameGraphics extends JFrame{
             Tile tile2_3 = new Tile(tileSize*2,tileSize*3,"green.png");
             Tile tile3_3 = new Tile(tileSize*3,tileSize*3,"blue.png");
 
-            ArrayList<Tile> tileList = new ArrayList<Tile>();
+
+
+
+
 
             Graphics2D g2 = (Graphics2D) g; // Graphics2D class extends the Grapgics class to provide more sophisticated control over geometrz, coordinta transformations, color management, and text layout.
             setBackground((Color.BLACK)); // background color of the window
             //g2.setColor(Color.BLACK); // guess what is sets the color of the graphic
+            ArrayList<Tile> tileList = new ArrayList<Tile>();
+            tileList.add(tile0_0);
+            tileList.add(tile1_0);
+            tileList.add(tile2_0);
+            tileList.add(tile3_0);
 
+            for(Tile tile:tileList){
+                g2.drawImage(tile.getImage(),tile.getX(),tile.getY(),tileSize,tileSize,null);
+            }
             //g2.setColor(Color.cyan); // guess what is sets the color of the graphic
             //g2.fillRect(logic.player.getCoord().x,logic.player.getCoord().y,tileSize,tileSize); //fills the rectangle, (x of the object, y of the object, xscale of object, y scale of object)
 
-            g2.drawImage(tile0_0.getImage(),tile0_0.getX(),tile0_0.getY(),tileSize,tileSize,null);
+            /*g2.drawImage(tile0_0.getImage(),tile0_0.getX(),tile0_0.getY(),tileSize,tileSize,null);
             g2.drawImage(tile1_0.getImage(),tile1_0.getX(),tile1_0.getY(),tileSize,tileSize,null);
             g2.drawImage(tile2_0.getImage(),tile2_0.getX(),tile2_0.getY(),tileSize,tileSize,null);
-            g2.drawImage(tile3_0.getImage(),tile3_0.getX(),tile3_0.getY(),tileSize,tileSize,null);
+            g2.drawImage(tile3_0.getImage(),tile3_0.getX(),tile3_0.getY(),tileSize,tileSize,null);*/
 
             g2.drawImage(tile0_1.getImage(),tile0_1.getX(),tile0_1.getY(),tileSize,tileSize,null);
             g2.drawImage(tile1_1.getImage(),tile1_1.getX(),tile1_1.getY(),tileSize,tileSize,null);
