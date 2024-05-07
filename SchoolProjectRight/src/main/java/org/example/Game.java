@@ -15,7 +15,9 @@ public class Game extends Thread{
     public boolean size;
 
     private GameLogic logic;
-    private GameGraphics graphics;
+    public GameGraphics graphics;
+
+    public boolean second;
     //private Player player;
     //Player player = new Player(10,10);
 
@@ -138,6 +140,7 @@ public class Game extends Thread{
                 System.out.println("Player Position: " + logic.getPlayer().getCoord().x +" and "+ logic.getPlayer().getCoord().y + " direction " + logic.getPlayer().getDirection());
                 drawCount = 0;
                 timer = 0;
+                second = true;
 
             }
         }

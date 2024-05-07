@@ -16,7 +16,8 @@ public class GameLogic {
     public Player player;
     public Enemy enemy;
 
-    private Game game;
+    public Game game;
+    public int pattern;
 
     //private KeyManager keyManager;
 
@@ -31,12 +32,13 @@ public class GameLogic {
         this.player = null;
         this.enemy = null;
         //keyManager = new KeyManager();
+
     }
 
     public void initialize(){
         Random random = new Random();
-        int enemyX = random.nextInt(1);
-        int enemyY = random.nextInt(1);
+        int enemyX = random.nextInt(4);
+        int enemyY = random.nextInt(4);
         player = new Player(0, 0, "boy_down_1.png");
         do {
             enemyX = random.nextInt(4);
@@ -45,6 +47,8 @@ public class GameLogic {
         enemy = new Enemy(128 * enemyX, 128 * enemyY, "boy_up_1.png");
 
         System.out.println("Game is initilized");
+
+
     }
 
 
@@ -68,7 +72,9 @@ public class GameLogic {
             //player.getCoord().x += 3; // Update x-coordinate for moving right
         }
 
-
+        if(game.second){
+            pattern = makePattern();
+        }
 
 
     }
@@ -94,5 +100,11 @@ public class GameLogic {
 
     public Player getPlayer() {
         return player;
+    }
+
+    public int makePattern(){
+        Random random = new Random();
+        int pattern = random.nextInt(2);
+        return pattern;
     }
 }

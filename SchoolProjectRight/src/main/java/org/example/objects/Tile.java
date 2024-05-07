@@ -11,14 +11,35 @@ public class Tile {
     private int y;
     private String type;
 
-    public Tile(int x, int y, String url) {
+    public Tile(int x, int y, String type) {
         this.x = x;
         this.y = y;
-        ImageIcon ii = new ImageIcon(getClass().getResource("/" + url));
+        setType(type);
+        ImageIcon ii = null;
+        switch (type){
+            case "blue" -> ii = new ImageIcon(getClass().getResource("/" + "blue.png"));
+            case "yellow" -> ii = new ImageIcon(getClass().getResource("/" + "yellow.png"));
+            case "red" -> ii = new ImageIcon(getClass().getResource("/" + "red.png"));
+            case "green" -> ii = new ImageIcon(getClass().getResource("/" + "green.png"));
+        }
+
         this.image = ii.getImage();
 
         this.width = ii.getIconWidth();
         this.height = ii.getIconHeight();
+    }
+
+    public void updateType(String type) {
+        setType(type);
+        ImageIcon ii = null;
+        switch (type){
+            case "blue" -> ii = new ImageIcon(getClass().getResource("/" + "blue.png"));
+            case "yellow" -> ii = new ImageIcon(getClass().getResource("/" + "yellow.png"));
+            case "red" -> ii = new ImageIcon(getClass().getResource("/" + "red.png"));
+            case "green" -> ii = new ImageIcon(getClass().getResource("/" + "green.png"));
+        }
+
+        this.image = ii.getImage();
     }
 
     public int getX() {
@@ -68,4 +89,5 @@ public class Tile {
     public void setType(String type) {
         this.type = type;
     }
+
 }

@@ -21,11 +21,16 @@ public class GameGraphics extends JFrame{
 
     public final int scrWidth = tileSize * maxScrCol; // screen width,
     public final int scrHeight = tileSize * maxScrRow; // screen height,
+
+
+
     //KeyManager keyManager= new KeyManager();
     public GameGraphics(GameLogic logic) throws HeadlessException {
         this.draw = new Draw();
         add(draw);
         this.logic = logic;
+
+
         setSize(scrWidth, scrHeight);
         setLocationRelativeTo(null); // sets location of the window. Null makes it in the middle of the screen
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -41,45 +46,68 @@ public class GameGraphics extends JFrame{
         public void paintComponent(Graphics g) { // draws graphics, like the draw event in GMS2
             super.paintComponent(g);
 
-
-
-            Tile tile0_0 = new Tile(tileSize*0,tileSize*0,"green.png");
-            Tile tile1_0 = new Tile(tileSize*1,tileSize*0,"blue.png");
-            Tile tile2_0 = new Tile(tileSize*2,tileSize*0,"yellow.png");
-            Tile tile3_0 = new Tile(tileSize*3,tileSize*0,"red.png");
-
-            Tile tile0_1 = new Tile(tileSize*0,tileSize*1,"yellow.png");
-            Tile tile1_1 = new Tile(tileSize*1,tileSize*1,"red.png");
-            Tile tile2_1 = new Tile(tileSize*2,tileSize*1,"green.png");
-            Tile tile3_1 = new Tile(tileSize*3,tileSize*1,"blue.png");
-
-            Tile tile0_2 = new Tile(tileSize*0,tileSize*2,"green.png");
-            Tile tile1_2 = new Tile(tileSize*1,tileSize*2,"blue.png");
-            Tile tile2_2 = new Tile(tileSize*2,tileSize*2,"yellow.png");
-            Tile tile3_2 = new Tile(tileSize*3,tileSize*2,"red.png");
-
-            Tile tile0_3 = new Tile(tileSize*0,tileSize*3,"yellow.png");
-            Tile tile1_3 = new Tile(tileSize*1,tileSize*3,"red.png");
-            Tile tile2_3 = new Tile(tileSize*2,tileSize*3,"green.png");
-            Tile tile3_3 = new Tile(tileSize*3,tileSize*3,"blue.png");
-
-
-
-
-
-
-            Graphics2D g2 = (Graphics2D) g; // Graphics2D class extends the Grapgics class to provide more sophisticated control over geometrz, coordinta transformations, color management, and text layout.
-            setBackground((Color.BLACK)); // background color of the window
-            //g2.setColor(Color.BLACK); // guess what is sets the color of the graphic
             ArrayList<Tile> tileList = new ArrayList<Tile>();
+            //1 ROW
+            Tile tile0_0 = new Tile(tileSize*0,tileSize*0,"green");
+            Tile tile1_0 = new Tile(tileSize*1,tileSize*0,"blue");
+            Tile tile2_0 = new Tile(tileSize*2,tileSize*0,"yellow");
+            Tile tile3_0 = new Tile(tileSize*3,tileSize*0,"red");
+            //2 ROW
+            Tile tile0_1 = new Tile(tileSize*0,tileSize*1,"yellow");
+            Tile tile1_1 = new Tile(tileSize*1,tileSize*1,"red");
+            Tile tile2_1 = new Tile(tileSize*2,tileSize*1,"green");
+            Tile tile3_1 = new Tile(tileSize*3,tileSize*1,"blue");
+            //3 ROW
+            Tile tile0_2 = new Tile(tileSize*0,tileSize*2,"green");
+            Tile tile1_2 = new Tile(tileSize*1,tileSize*2,"blue");
+            Tile tile2_2 = new Tile(tileSize*2,tileSize*2,"yellow");
+            Tile tile3_2 = new Tile(tileSize*3,tileSize*2,"red");
+            //4 ROW
+            Tile tile0_3 = new Tile(tileSize*0,tileSize*3,"yellow");
+            Tile tile1_3 = new Tile(tileSize*1,tileSize*3,"red");
+            Tile tile2_3 = new Tile(tileSize*2,tileSize*3,"green");
+            Tile tile3_3 = new Tile(tileSize*3,tileSize*3,"blue");
+
             tileList.add(tile0_0);
             tileList.add(tile1_0);
             tileList.add(tile2_0);
             tileList.add(tile3_0);
 
-            for(Tile tile:tileList){
-                g2.drawImage(tile.getImage(),tile.getX(),tile.getY(),tileSize,tileSize,null);
+
+            Graphics2D g2 = (Graphics2D) g; // Graphics2D class extends the Grapgics class to provide more sophisticated control over geometrz, coordinta transformations, color management, and text layout.
+            setBackground((Color.BLACK)); // background color of the window
+            //g2.setColor(Color.BLACK); // guess what is sets the color of the graphic
+
+            int pattern = logic.pattern;
+
+            switch (pattern){
+                case 1 -> {
+                    tileList.get(1).updateType("blue");
+                    tileList.get(3).updateType("blue");
+                    tileList.get(0).updateType("blue");
+                }
+                case 2 -> {
+                    tileList.get(1).updateType("red");
+                    tileList.get(3).updateType("red");
+                    tileList.get(0).updateType("red");
+                }
+                case 3 -> {
+                    tileList.get(3).updateType("yellow");
+                    tileList.get(2).updateType("yellow");
+                    tileList.get(0).updateType("yellow");
+                }
+
             }
+
+
+
+
+            for(Tile tile:tileList){
+
+                g2.drawImage(tile.getImage(),tile.getX(),tile.getY(),tileSize,tileSize,null);
+
+            }
+
             //g2.setColor(Color.cyan); // guess what is sets the color of the graphic
             //g2.fillRect(logic.player.getCoord().x,logic.player.getCoord().y,tileSize,tileSize); //fills the rectangle, (x of the object, y of the object, xscale of object, y scale of object)
 
