@@ -102,9 +102,8 @@ public class GameLogic {
         return player;
     }
 
-    public int makePattern(){
+    public int makePattern() {
         Random random = new Random();
-        int pattern = random.nextInt(2);
-        return pattern;
+        return random.nextInt(4) + 1;
     }
 }

@@ -16,6 +16,7 @@ public class Game extends Thread{
 
     private GameLogic logic;
     public GameGraphics graphics;
+    private long lastPatternUpdateTime = System.nanoTime();
 
     public boolean second;
     //private Player player;
@@ -131,7 +132,15 @@ public class Game extends Thread{
                 graphics.render(logic);
                 delta--;
                 drawCount++;
-
+                if (second) {
+                    int pattern = logic.makePattern(); // Update the pattern
+                    second = false;
+                    lastPatternUpdateTime = currentTime; // Update the last update time
+                }
+                long elapsedTimeSincePatternUpdate = currentTime - lastPatternUpdateTime;
+                if (elapsedTimeSincePatternUpdate >= 1_000_000_000) { // Check if one second has passed
+                    second = true; // Set second to true to trigger the pattern update on the next iteration
+                }
 
             }
             if(timer >= 1000000000){
@@ -140,9 +149,8 @@ public class Game extends Thread{
                 System.out.println("Player Position: " + logic.getPlayer().getCoord().x +" and "+ logic.getPlayer().getCoord().y + " direction " + logic.getPlayer().getDirection());
                 drawCount = 0;
                 timer = 0;
-                second = true;
-
             }
+
         }
 
     }
