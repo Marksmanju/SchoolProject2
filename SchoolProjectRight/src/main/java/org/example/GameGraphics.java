@@ -2,12 +2,9 @@ package org.example;
 
 import org.example.objects.Tile;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.Color;
-import java.awt.event.KeyListener;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 public class GameGraphics extends JFrame{
@@ -243,11 +240,11 @@ public class GameGraphics extends JFrame{
 
 
             g2.drawImage(logic.player.getImage(),logic.player.getCoord().x,logic.player.getCoord().y,tileSize,tileSize,null);
-            g2.drawImage(logic.enemy.getImage(),logic.enemy.getCoord().x,logic.enemy.getCoord().y,tileSize,tileSize,null);
+            g2.drawImage(logic.point.getImage(),logic.point.getCoord().x,logic.point.getCoord().y,tileSize,tileSize,null);
 
             g2.setColor(Color.WHITE);
 
-            g2.drawString("Test",700,50);
+            g2.drawString("Points: " + logic.points,700,50);
 
             g2.dispose(); // Dispose of this graphics context and release any system resources that is it using
         }

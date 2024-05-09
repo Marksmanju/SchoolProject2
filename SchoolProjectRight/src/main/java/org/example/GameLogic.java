@@ -1,23 +1,23 @@
 package org.example;
 
-import org.example.objects.Enemy;
+import org.example.objects.Point;
 import org.example.objects.Player;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.io.IOException;
 import java.util.Random;
-import java.util.random.RandomGenerator;
 
 public class GameLogic {
     int FPS = 60;
     public Player player;
-    public Enemy enemy;
+    public Point point;
+    private Random random = new Random();
 
     public Game game;
     public int pattern;
+    public int points;
+    private int pointX = random.nextInt(4);
+    private int pointY = random.nextInt(4);
 
     //private KeyManager keyManager;
 
@@ -30,21 +30,18 @@ public class GameLogic {
         this.game = game;
 
         this.player = null;
-        this.enemy = null;
+        this.point = null;
         //keyManager = new KeyManager();
 
     }
 
     public void initialize(){
-        Random random = new Random();
-        int enemyX = random.nextInt(4);
-        int enemyY = random.nextInt(4);
         player = new Player(0, 0, "boy_down_1.png");
         do {
-            enemyX = random.nextInt(4);
-            enemyY = random.nextInt(4);
-        } while (enemyX == player.getX() && enemyY == player.getY());
-        enemy = new Enemy(128 * enemyX, 128 * enemyY, "boy_up_1.png");
+            pointX = random.nextInt(4);
+            pointY = random.nextInt(4);
+        } while (pointX == player.getX() && pointY == player.getY());
+        point = new Point(128 * pointX, 128 * pointY, "boy_up_1.png");
 
         System.out.println("Game is initilized");
 
@@ -70,6 +67,16 @@ public class GameLogic {
         else if(game.rightPressed){
             player.direction = "right";
             //player.getCoord().x += 3; // Update x-coordinate for moving right
+        }
+
+        if(point.getX() == player.getX() && point.getY()== player.getY()){
+            do {
+                pointX = random.nextInt(4);
+                pointY = random.nextInt(4);
+            } while (pointX == player.getX() && pointY == player.getY());
+            point = new Point(128 * pointX, 128 * pointY, "boy_up_1.png");
+
+            points += 1;
         }
 
         if(game.second){
