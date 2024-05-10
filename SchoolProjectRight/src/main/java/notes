@@ -1,0 +1,5 @@
+How to export:
+go to Project structure
+go to artifacts
+add JAR from modules with dependencies
+add a class that starts the game

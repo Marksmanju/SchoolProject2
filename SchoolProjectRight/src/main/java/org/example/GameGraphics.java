@@ -35,55 +35,41 @@ public class GameGraphics extends JFrame{
         setVisible(true);
         setTitle("sfdsd");
 
-        Tile tile0_0 = new Tile(tileSize*0,tileSize*0,"green");
-        Tile tile1_0 = new Tile(tileSize*1,tileSize*0,"blue");
-        Tile tile2_0 = new Tile(tileSize*2,tileSize*0,"yellow");
-        Tile tile3_0 = new Tile(tileSize*3,tileSize*0,"red");
-        //2 ROW
-        Tile tile0_1 = new Tile(tileSize*0,tileSize*1,"yellow");
-        Tile tile1_1 = new Tile(tileSize*1,tileSize*1,"red");
-        Tile tile2_1 = new Tile(tileSize*2,tileSize*1,"green");
-        Tile tile3_1 = new Tile(tileSize*3,tileSize*1,"blue");
-        //3 ROW
-        Tile tile0_2 = new Tile(tileSize*0,tileSize*2,"green");
-        Tile tile1_2 = new Tile(tileSize*1,tileSize*2,"blue");
-        Tile tile2_2 = new Tile(tileSize*2,tileSize*2,"yellow");
-        Tile tile3_2 = new Tile(tileSize*3,tileSize*2,"red");
-        //4 ROW
-        Tile tile0_3 = new Tile(tileSize*0,tileSize*3,"yellow");
-        Tile tile1_3 = new Tile(tileSize*1,tileSize*3,"red");
-        Tile tile2_3 = new Tile(tileSize*2,tileSize*3,"green");
-        Tile tile3_3 = new Tile(tileSize*3,tileSize*3,"blue");
-        ArrayList<Tile> tileList1 = new ArrayList<Tile>();
-        tileList1.add(tile0_0);
-        tileList1.add(tile1_0);
-        tileList1.add(tile2_0);
-        tileList1.add(tile3_0);
-
     }
 
 
 
     public class Draw extends JPanel {
+        //1 ROW
         Tile tile0_0 = new Tile(tileSize*0,tileSize*0,"green");
         Tile tile1_0 = new Tile(tileSize*1,tileSize*0,"blue");
         Tile tile2_0 = new Tile(tileSize*2,tileSize*0,"yellow");
         Tile tile3_0 = new Tile(tileSize*3,tileSize*0,"red");
+        Tile tile4_0 = new Tile(tileSize*4,tileSize*0,"red");
         //2 ROW
         Tile tile0_1 = new Tile(tileSize*0,tileSize*1,"yellow");
         Tile tile1_1 = new Tile(tileSize*1,tileSize*1,"red");
         Tile tile2_1 = new Tile(tileSize*2,tileSize*1,"green");
         Tile tile3_1 = new Tile(tileSize*3,tileSize*1,"blue");
+        Tile tile4_1 = new Tile(tileSize*4,tileSize*1,"blue");
         //3 ROW
         Tile tile0_2 = new Tile(tileSize*0,tileSize*2,"green");
         Tile tile1_2 = new Tile(tileSize*1,tileSize*2,"blue");
         Tile tile2_2 = new Tile(tileSize*2,tileSize*2,"yellow");
         Tile tile3_2 = new Tile(tileSize*3,tileSize*2,"red");
+        Tile tile4_2 = new Tile(tileSize*4,tileSize*2,"red");
         //4 ROW
         Tile tile0_3 = new Tile(tileSize*0,tileSize*3,"yellow");
         Tile tile1_3 = new Tile(tileSize*1,tileSize*3,"red");
         Tile tile2_3 = new Tile(tileSize*2,tileSize*3,"green");
         Tile tile3_3 = new Tile(tileSize*3,tileSize*3,"blue");
+        Tile tile4_3 = new Tile(tileSize*4,tileSize*3,"blue");
+        //5 ROW
+        Tile tile0_4 = new Tile(tileSize*0,tileSize*4,"yellow");
+        Tile tile1_4 = new Tile(tileSize*1,tileSize*4,"red");
+        Tile tile2_4 = new Tile(tileSize*2,tileSize*4,"green");
+        Tile tile3_4 = new Tile(tileSize*3,tileSize*4,"blue");
+        Tile tile4_4 = new Tile(tileSize*4,tileSize*4,"yellow");
 
 
 
@@ -94,26 +80,49 @@ public class GameGraphics extends JFrame{
             ArrayList<Tile> tileList2 = new ArrayList<Tile>();
             ArrayList<Tile> tileList3 = new ArrayList<Tile>();
             ArrayList<Tile> tileList4 = new ArrayList<Tile>();
+            ArrayList<Tile> tileList5 = new ArrayList<Tile>();
+            ArrayList<ArrayList<Tile>> tileLists = new ArrayList<ArrayList<Tile>>();
+
+            String[] typePattern1 = {"blue", "blue", "blue", "blue", "blue"};
+            String[] typePattern2 = {"yellow", "yellow", "yellow", "yellow", "yellow"};
+            String[] typePattern3 = {"green", "green", "green", "green", "green"};
+            String[] typePattern4 = {"red", "red", "red", "red", "red"};
 
             tileList1.add(tile0_0);
             tileList1.add(tile1_0);
             tileList1.add(tile2_0);
             tileList1.add(tile3_0);
+            tileList1.add(tile4_0);
 
             tileList2.add(tile0_1);
             tileList2.add(tile1_1);
             tileList2.add(tile2_1);
             tileList2.add(tile3_1);
+            tileList2.add(tile4_1);
 
             tileList3.add(tile0_2);
             tileList3.add(tile1_2);
             tileList3.add(tile2_2);
             tileList3.add(tile3_2);
+            tileList3.add(tile4_2);
 
             tileList4.add(tile0_3);
             tileList4.add(tile1_3);
             tileList4.add(tile2_3);
             tileList4.add(tile3_3);
+            tileList4.add(tile4_3);
+
+            tileList5.add(tile0_4);
+            tileList5.add(tile1_4);
+            tileList5.add(tile2_4);
+            tileList5.add(tile3_4);
+            tileList5.add(tile4_4);
+
+            tileLists.add(tileList1);
+            tileLists.add(tileList2);
+            tileLists.add(tileList3);
+            tileLists.add(tileList4);
+            tileLists.add(tileList5);
 
             Graphics2D g2 = (Graphics2D) g; // Graphics2D class extends the Grapgics class to provide more sophisticated control over geometrz, coordinta transformations, color management, and text layout.
             setBackground((Color.BLACK)); // background color of the window
@@ -123,89 +132,33 @@ public class GameGraphics extends JFrame{
 
             switch (pattern) {
                 case 1:
-                    tileList1.get(0).updateType("blue");
-                    tileList1.get(1).updateType("blue");
-                    tileList1.get(2).updateType("blue");
-                    tileList1.get(3).updateType("blue");
-
-                    tileList2.get(0).updateType("red");
-                    tileList2.get(1).updateType("red");
-                    tileList2.get(2).updateType("red");
-                    tileList2.get(3).updateType("red");
-
-                    tileList3.get(0).updateType("yellow");
-                    tileList3.get(1).updateType("yellow");
-                    tileList3.get(2).updateType("yellow");
-                    tileList3.get(3).updateType("yellow");
-
-                    tileList4.get(0).updateType("green");
-                    tileList4.get(1).updateType("green");
-                    tileList4.get(2).updateType("green");
-                    tileList4.get(3).updateType("green");
+                    logic.setTileListTypes(tileList1, typePattern1);
+                    logic.setTileListTypes(tileList2, typePattern2);
+                    logic.setTileListTypes(tileList3, typePattern3);
+                    logic.setTileListTypes(tileList4, typePattern4);
+                    logic.setTileListTypes(tileList5, typePattern1);
 
                     break;
                 case 2:
-                    tileList1.get(0).updateType("red");
-                    tileList1.get(1).updateType("red");
-                    tileList1.get(2).updateType("red");
-                    tileList1.get(3).updateType("red");
-
-                    tileList2.get(0).updateType("blue");
-                    tileList2.get(1).updateType("blue");
-                    tileList2.get(2).updateType("blue");
-                    tileList2.get(3).updateType("blue");
-
-                    tileList3.get(0).updateType("green");
-                    tileList3.get(1).updateType("green");
-                    tileList3.get(2).updateType("green");
-                    tileList3.get(3).updateType("green");
-
-                    tileList4.get(0).updateType("yellow");
-                    tileList4.get(1).updateType("yellow");
-                    tileList4.get(2).updateType("yellow");
-                    tileList4.get(3).updateType("yellow");
+                    logic.setTileListTypes(tileList1, typePattern2);
+                    logic.setTileListTypes(tileList2, typePattern3);
+                    logic.setTileListTypes(tileList3, typePattern4);
+                    logic.setTileListTypes(tileList4, typePattern1);
+                    logic.setTileListTypes(tileList5, typePattern2);
                     break;
                 case 3:
-                    tileList1.get(0).updateType("yellow");
-                    tileList1.get(1).updateType("yellow");
-                    tileList1.get(2).updateType("yellow");
-                    tileList1.get(3).updateType("yellow");
-
-                    tileList2.get(0).updateType("green");
-                    tileList2.get(1).updateType("green");
-                    tileList2.get(2).updateType("green");
-                    tileList2.get(3).updateType("green");
-
-                    tileList3.get(0).updateType("red");
-                    tileList3.get(1).updateType("red");
-                    tileList3.get(2).updateType("red");
-                    tileList3.get(3).updateType("red");
-
-                    tileList4.get(0).updateType("blue");
-                    tileList4.get(1).updateType("blue");
-                    tileList4.get(2).updateType("blue");
-                    tileList4.get(3).updateType("blue");
+                    logic.setTileListTypes(tileList1, typePattern3);
+                    logic.setTileListTypes(tileList2, typePattern4);
+                    logic.setTileListTypes(tileList3, typePattern1);
+                    logic.setTileListTypes(tileList4, typePattern2);
+                    logic.setTileListTypes(tileList5, typePattern3);
                     break;
                 case 4:
-                    tileList1.get(0).updateType("green");
-                    tileList1.get(1).updateType("green");
-                    tileList1.get(2).updateType("green");
-                    tileList1.get(3).updateType("green");
-
-                    tileList2.get(0).updateType("yellow");
-                    tileList2.get(1).updateType("yellow");
-                    tileList2.get(2).updateType("yellow");
-                    tileList2.get(3).updateType("yellow");
-
-                    tileList3.get(0).updateType("blue");
-                    tileList3.get(1).updateType("blue");
-                    tileList3.get(2).updateType("blue");
-                    tileList3.get(3).updateType("blue");
-
-                    tileList4.get(0).updateType("red");
-                    tileList4.get(1).updateType("red");
-                    tileList4.get(2).updateType("red");
-                    tileList4.get(3).updateType("red");
+                    logic.setTileListTypes(tileList1, typePattern4);
+                    logic.setTileListTypes(tileList2, typePattern1);
+                    logic.setTileListTypes(tileList3, typePattern2);
+                    logic.setTileListTypes(tileList4, typePattern3);
+                    logic.setTileListTypes(tileList5, typePattern4);
                     break;
             }
 
@@ -214,30 +167,7 @@ public class GameGraphics extends JFrame{
             drawTileList(g2,tileList2);
             drawTileList(g2,tileList3);
             drawTileList(g2,tileList4);
-
-            //g2.setColor(Color.cyan); // guess what is sets the color of the graphic
-            //g2.fillRect(logic.player.getCoord().x,logic.player.getCoord().y,tileSize,tileSize); //fills the rectangle, (x of the object, y of the object, xscale of object, y scale of object)
-
-            /*g2.drawImage(tile0_0.getImage(),tile0_0.getX(),tile0_0.getY(),tileSize,tileSize,null);
-            g2.drawImage(tile1_0.getImage(),tile1_0.getX(),tile1_0.getY(),tileSize,tileSize,null);
-            g2.drawImage(tile2_0.getImage(),tile2_0.getX(),tile2_0.getY(),tileSize,tileSize,null);
-            g2.drawImage(tile3_0.getImage(),tile3_0.getX(),tile3_0.getY(),tileSize,tileSize,null);
-
-            g2.drawImage(tile0_1.getImage(),tile0_1.getX(),tile0_1.getY(),tileSize,tileSize,null);
-            g2.drawImage(tile1_1.getImage(),tile1_1.getX(),tile1_1.getY(),tileSize,tileSize,null);
-            g2.drawImage(tile2_1.getImage(),tile2_1.getX(),tile2_1.getY(),tileSize,tileSize,null);
-            g2.drawImage(tile3_1.getImage(),tile3_1.getX(),tile3_1.getY(),tileSize,tileSize,null);
-
-            g2.drawImage(tile0_2.getImage(),tile0_2.getX(),tile0_2.getY(),tileSize,tileSize,null);
-            g2.drawImage(tile1_2.getImage(),tile1_2.getX(),tile1_2.getY(),tileSize,tileSize,null);
-            g2.drawImage(tile2_2.getImage(),tile2_2.getX(),tile2_2.getY(),tileSize,tileSize,null);
-            g2.drawImage(tile3_2.getImage(),tile3_2.getX(),tile3_2.getY(),tileSize,tileSize,null);
-
-            g2.drawImage(tile0_3.getImage(),tile0_3.getX(),tile0_3.getY(),tileSize,tileSize,null);
-            g2.drawImage(tile1_3.getImage(),tile1_3.getX(),tile1_3.getY(),tileSize,tileSize,null);
-            g2.drawImage(tile2_3.getImage(),tile2_3.getX(),tile2_3.getY(),tileSize,tileSize,null);
-            g2.drawImage(tile3_3.getImage(),tile3_3.getX(),tile3_3.getY(),tileSize,tileSize,null);*/
-
+            drawTileList(g2,tileList5);
 
             g2.drawImage(logic.player.getImage(),logic.player.getCoord().x,logic.player.getCoord().y,tileSize,tileSize,null);
             g2.drawImage(logic.point.getImage(),logic.point.getCoord().x,logic.point.getCoord().y,tileSize,tileSize,null);
@@ -261,6 +191,8 @@ public class GameGraphics extends JFrame{
             g.drawImage(tile.getImage(),tile.getX(),tile.getY(),tileSize,tileSize,null);
         }
     }
+
+
 
     public void render(GameLogic logic) { //renders the graphics
         this.logic = logic;

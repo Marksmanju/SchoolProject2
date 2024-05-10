@@ -2,9 +2,11 @@ package org.example;
 
 import org.example.objects.Point;
 import org.example.objects.Player;
+import org.example.objects.Tile;
 
 import javax.imageio.ImageIO;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class GameLogic {
@@ -16,8 +18,8 @@ public class GameLogic {
     public Game game;
     public int pattern;
     public int points;
-    private int pointX = random.nextInt(4);
-    private int pointY = random.nextInt(4);
+    private int pointX = random.nextInt(5);
+    private int pointY = random.nextInt(5);
 
     //private KeyManager keyManager;
 
@@ -38,8 +40,8 @@ public class GameLogic {
     public void initialize(){
         player = new Player(0, 0, "boy_down_1.png");
         do {
-            pointX = random.nextInt(4);
-            pointY = random.nextInt(4);
+            pointX = random.nextInt(5);
+            pointY = random.nextInt(5);
         } while (pointX == player.getX() && pointY == player.getY());
         point = new Point(128 * pointX, 128 * pointY, "boy_up_1.png");
 
@@ -71,8 +73,8 @@ public class GameLogic {
 
         if(point.getX() == player.getX() && point.getY()== player.getY()){
             do {
-                pointX = random.nextInt(4);
-                pointY = random.nextInt(4);
+                pointX = random.nextInt(5);
+                pointY = random.nextInt(5);
             } while (pointX == player.getX() && pointY == player.getY());
             point = new Point(128 * pointX, 128 * pointY, "boy_up_1.png");
 
@@ -113,4 +115,11 @@ public class GameLogic {
         Random random = new Random();
         return random.nextInt(4) + 1;
     }
+
+    public void setTileListTypes(ArrayList<Tile> tileList, String[] types) {
+        for (int i = 0; i < tileList.size(); i++) {
+            tileList.get(i).updateType(types[i]);
+        }
+    }
+
 }

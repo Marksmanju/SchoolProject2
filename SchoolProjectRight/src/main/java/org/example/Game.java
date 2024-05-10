@@ -55,7 +55,7 @@ public class Game extends Thread{
                 if((code == KeyEvent.VK_S) || (code == KeyEvent.VK_DOWN)){
                     downPressed = true;
                     logic.player.setColor(Color.blue);
-                    if(!((logic.player.getY() + 96) > 384)){
+                    if(!((logic.player.getY() + 96) > 512)){
                         logic.player.setY(logic.player.getY() + steps);
                     }
                     //logic.player.direction = "down";
@@ -73,7 +73,7 @@ public class Game extends Thread{
                 if((code == KeyEvent.VK_D) || (code == KeyEvent.VK_RIGHT)){
                     rightPressed = true;
                     logic.player.setColor(Color.GREEN);
-                    if(!((logic.player.getX() + 96) > 384)){
+                    if(!((logic.player.getX() + 96) > 512)){
                         logic.player.setX(logic.player.getX() + steps);
                     }
                     //logic.player.direction = "right";
