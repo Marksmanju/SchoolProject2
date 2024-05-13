@@ -89,6 +89,12 @@ public class Tile {
     public void setType(String type) {
         this.type = type;
     }
+    public Rectangle getRectangle(){
+        return new Rectangle(x,y,width, height);
+    }
 
+    public boolean isCollided (Rectangle otherObject) {
+        return getRectangle().intersects(otherObject);
+    }
 
 }

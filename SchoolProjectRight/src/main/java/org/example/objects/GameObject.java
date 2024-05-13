@@ -64,4 +64,12 @@ public class GameObject {
     public void setImage(Image image) {
         this.image = image;
     }
+
+    public Rectangle getRectangle(){
+        return new Rectangle(coord.x,coord.y,width, height);
+    }
+
+    public boolean isCollided (Rectangle otherObject) {
+        return getRectangle().intersects(otherObject);
+    }
 }

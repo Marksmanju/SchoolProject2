@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 public class GameGraphics extends JFrame{
     public Draw draw;
+    private Font font;
     GameLogic logic;
     final int ogTileSize = 32; //original tile size
     final int scale = 4; // scale of the sprites
@@ -83,10 +84,18 @@ public class GameGraphics extends JFrame{
             ArrayList<Tile> tileList5 = new ArrayList<Tile>();
             ArrayList<ArrayList<Tile>> tileLists = new ArrayList<ArrayList<Tile>>();
 
-            String[] typePattern1 = {"blue", "blue", "blue", "blue", "blue"};
-            String[] typePattern2 = {"yellow", "yellow", "yellow", "yellow", "yellow"};
-            String[] typePattern3 = {"green", "green", "green", "green", "green"};
-            String[] typePattern4 = {"red", "red", "red", "red", "red"};
+            Font myFont = new Font("Dialog", Font.PLAIN, 50);
+
+            String[] typePattern1 = {"green", "green", "green", "green", "green"};
+            String[] typePattern2 = {"red", "green", "green", "green", "green"};
+            String[] typePattern3 = {"green", "green", "red", "green", "green"};
+            String[] typePattern4 = {"green", "green", "green", "red", "green"};
+            String[] typePattern5 = {"green", "green", "green", "green", "red"};
+            String[] typePattern6 = {"green", "red", "green", "green", "green"};
+            String[] typePattern7 = {"green", "red", "red", "green", "green"};
+            String[] typePattern8 = {"red", "green", "green", "green", "red"};
+            String[] typePattern9 = {"green", "green", "red", "red", "green"};
+            String[] typePattern10 = {"green", "red", "green", "green", "red"};
 
             tileList1.add(tile0_0);
             tileList1.add(tile1_0);
@@ -136,7 +145,7 @@ public class GameGraphics extends JFrame{
                     logic.setTileListTypes(tileList2, typePattern2);
                     logic.setTileListTypes(tileList3, typePattern3);
                     logic.setTileListTypes(tileList4, typePattern4);
-                    logic.setTileListTypes(tileList5, typePattern1);
+                    logic.setTileListTypes(tileList5, typePattern5);
 
                     break;
                 case 2:
@@ -149,19 +158,110 @@ public class GameGraphics extends JFrame{
                 case 3:
                     logic.setTileListTypes(tileList1, typePattern3);
                     logic.setTileListTypes(tileList2, typePattern4);
-                    logic.setTileListTypes(tileList3, typePattern1);
+                    logic.setTileListTypes(tileList3, typePattern7);
                     logic.setTileListTypes(tileList4, typePattern2);
                     logic.setTileListTypes(tileList5, typePattern3);
                     break;
                 case 4:
                     logic.setTileListTypes(tileList1, typePattern4);
+                    logic.setTileListTypes(tileList2, typePattern6);
+                    logic.setTileListTypes(tileList3, typePattern2);
+                    logic.setTileListTypes(tileList4, typePattern3);
+                    logic.setTileListTypes(tileList5, typePattern4);
+                    break;
+                case 5:
+                    logic.setTileListTypes(tileList1, typePattern7);
+                    logic.setTileListTypes(tileList2, typePattern7);
+                    logic.setTileListTypes(tileList3, typePattern2);
+                    logic.setTileListTypes(tileList4, typePattern1);
+                    logic.setTileListTypes(tileList5, typePattern5);
+                    break;
+
+                case 6:
+                    logic.setTileListTypes(tileList1, typePattern4);
+                    logic.setTileListTypes(tileList2, typePattern7);
+                    logic.setTileListTypes(tileList3, typePattern8);
+                    logic.setTileListTypes(tileList4, typePattern5);
+                    logic.setTileListTypes(tileList5, typePattern2);
+                    break;
+                case 7:
+                    logic.setTileListTypes(tileList1, typePattern5);
+                    logic.setTileListTypes(tileList2, typePattern6);
+                    logic.setTileListTypes(tileList3, typePattern7);
+                    logic.setTileListTypes(tileList4, typePattern8);
+                    logic.setTileListTypes(tileList5, typePattern6);
+                    break;
+                case 8:
+                    logic.setTileListTypes(tileList1, typePattern6);
+                    logic.setTileListTypes(tileList2, typePattern7);
+                    logic.setTileListTypes(tileList3, typePattern8);
+                    logic.setTileListTypes(tileList4, typePattern9);
+                    logic.setTileListTypes(tileList5, typePattern10);
+                    break;
+                case 9:
+                    logic.setTileListTypes(tileList1, typePattern7);
+                    logic.setTileListTypes(tileList2, typePattern8);
+                    logic.setTileListTypes(tileList3, typePattern9);
+                    logic.setTileListTypes(tileList4, typePattern10);
+                    logic.setTileListTypes(tileList5, typePattern1);
+                    break;
+                case 10:
+                    logic.setTileListTypes(tileList1, typePattern8);
+                    logic.setTileListTypes(tileList2, typePattern9);
+                    logic.setTileListTypes(tileList3, typePattern10);
+                    logic.setTileListTypes(tileList4, typePattern1);
+                    logic.setTileListTypes(tileList5, typePattern2);
+                    break;
+                case 11:
+                    logic.setTileListTypes(tileList1, typePattern9);
+                    logic.setTileListTypes(tileList2, typePattern10);
+                    logic.setTileListTypes(tileList3, typePattern1);
+                    logic.setTileListTypes(tileList4, typePattern2);
+                    logic.setTileListTypes(tileList5, typePattern3);
+                    break;
+                case 12:
+                    logic.setTileListTypes(tileList1, typePattern10);
                     logic.setTileListTypes(tileList2, typePattern1);
                     logic.setTileListTypes(tileList3, typePattern2);
                     logic.setTileListTypes(tileList4, typePattern3);
                     logic.setTileListTypes(tileList5, typePattern4);
                     break;
+                case 13:
+                    logic.setTileListTypes(tileList1, typePattern1);
+                    logic.setTileListTypes(tileList2, typePattern2);
+                    logic.setTileListTypes(tileList3, typePattern3);
+                    logic.setTileListTypes(tileList4, typePattern4);
+                    logic.setTileListTypes(tileList5, typePattern5);
+                    break;
+                case 14:
+                    logic.setTileListTypes(tileList1, typePattern2);
+                    logic.setTileListTypes(tileList2, typePattern3);
+                    logic.setTileListTypes(tileList3, typePattern4);
+                    logic.setTileListTypes(tileList4, typePattern5);
+                    logic.setTileListTypes(tileList5, typePattern6);
+                    break;
+                case 15:
+                    logic.setTileListTypes(tileList1, typePattern3);
+                    logic.setTileListTypes(tileList2, typePattern4);
+                    logic.setTileListTypes(tileList3, typePattern5);
+                    logic.setTileListTypes(tileList4, typePattern6);
+                    logic.setTileListTypes(tileList5, typePattern7);
+                    break;
+                case 16:
+                    logic.setTileListTypes(tileList1, typePattern4);
+                    logic.setTileListTypes(tileList2, typePattern5);
+                    logic.setTileListTypes(tileList3, typePattern6);
+                    logic.setTileListTypes(tileList4, typePattern7);
+                    logic.setTileListTypes(tileList5, typePattern8);
+                    break;
+                case 17:
+                    logic.setTileListTypes(tileList1, typePattern5);
+                    logic.setTileListTypes(tileList2, typePattern6);
+                    logic.setTileListTypes(tileList3, typePattern7);
+                    logic.setTileListTypes(tileList4, typePattern8);
+                    logic.setTileListTypes(tileList5, typePattern9);
+                    break;
             }
-
 
             drawTileList(g2,tileList1);
             drawTileList(g2,tileList2);
@@ -171,10 +271,22 @@ public class GameGraphics extends JFrame{
 
             g2.drawImage(logic.player.getImage(),logic.player.getCoord().x,logic.player.getCoord().y,tileSize,tileSize,null);
             g2.drawImage(logic.point.getImage(),logic.point.getCoord().x,logic.point.getCoord().y,tileSize,tileSize,null);
+            g2.drawImage(logic.point2.getImage(),logic.point2.getCoord().x,logic.point2.getCoord().y,tileSize,tileSize,null);
+            g2.drawImage(logic.enemy.getImage(),logic.enemy.getCoord().x,logic.enemy.getCoord().y,tileSize,tileSize,null);
 
+            if(logic.getTileListTypes(tileLists) == "red"){
+                logic.points -= 1;
+            }
+
+
+
+            g2.setFont(myFont);
+            g2.setColor(Color.blue);
+            g2.drawString("Points: " + logic.points,702,52);
             g2.setColor(Color.WHITE);
-
             g2.drawString("Points: " + logic.points,700,50);
+
+
 
             g2.dispose(); // Dispose of this graphics context and release any system resources that is it using
         }
