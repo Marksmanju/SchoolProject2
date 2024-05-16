@@ -26,9 +26,6 @@ public class Game extends Thread{
 
     //KeyManager keyManager = new KeyManager();
 
-
-
-
     int FPS = 60;
 
     public Game() {
@@ -161,7 +158,7 @@ public class Game extends Thread{
                 delta--;
                 drawCount++;
                 if (second) {
-                    int pattern = logic.makePattern(); // Update the pattern
+                    //int pattern = logic.makePattern(); // Update the pattern
                     second = false;
                     lastPatternUpdateTime = currentTime; // Update the last update time
                 }

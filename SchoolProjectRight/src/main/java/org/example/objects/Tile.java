@@ -17,10 +17,10 @@ public class Tile {
         setType(type);
         ImageIcon ii = null;
         switch (type){
-            case "blue" -> ii = new ImageIcon(getClass().getResource("/" + "blue.png"));
-            case "yellow" -> ii = new ImageIcon(getClass().getResource("/" + "yellow.png"));
-            case "red" -> ii = new ImageIcon(getClass().getResource("/" + "red.png"));
-            case "green" -> ii = new ImageIcon(getClass().getResource("/" + "green.png"));
+            case "blue"     -> ii = new ImageIcon(getClass().getResource("/" + "blue.png"));
+            case "yellow"   -> ii = new ImageIcon(getClass().getResource("/" + "yellow.png"));
+            case "red"      -> ii = new ImageIcon(getClass().getResource("/" + "red.png"));
+            case "green"    -> ii = new ImageIcon(getClass().getResource("/" + "green.png"));
         }
 
         this.image = ii.getImage();
@@ -33,10 +33,10 @@ public class Tile {
         setType(type);
         ImageIcon ii = null;
         switch (type){
-            case "blue" -> ii = new ImageIcon(getClass().getResource("/" + "blue.png"));
-            case "yellow" -> ii = new ImageIcon(getClass().getResource("/" + "yellow.png"));
-            case "red" -> ii = new ImageIcon(getClass().getResource("/" + "red.png"));
-            case "green" -> ii = new ImageIcon(getClass().getResource("/" + "green.png"));
+            case "blue"     -> ii = new ImageIcon(getClass().getResource("/" + "blue.png"));
+            case "yellow"   -> ii = new ImageIcon(getClass().getResource("/" + "yellow.png"));
+            case "red"      -> ii = new ImageIcon(getClass().getResource("/" + "red.png"));
+            case "green"    -> ii = new ImageIcon(getClass().getResource("/" + "green.png"));
         }
 
         this.image = ii.getImage();

@@ -41,31 +41,31 @@ public class GameGraphics extends JFrame{
 
 
     public class Draw extends JPanel {
-        //1 ROW
+        //1 ROW=============================================================
         Tile tile0_0 = new Tile(tileSize*0,tileSize*0,"green");
         Tile tile1_0 = new Tile(tileSize*1,tileSize*0,"blue");
         Tile tile2_0 = new Tile(tileSize*2,tileSize*0,"yellow");
         Tile tile3_0 = new Tile(tileSize*3,tileSize*0,"red");
         Tile tile4_0 = new Tile(tileSize*4,tileSize*0,"red");
-        //2 ROW
+        //2 ROW=============================================================
         Tile tile0_1 = new Tile(tileSize*0,tileSize*1,"yellow");
         Tile tile1_1 = new Tile(tileSize*1,tileSize*1,"red");
         Tile tile2_1 = new Tile(tileSize*2,tileSize*1,"green");
         Tile tile3_1 = new Tile(tileSize*3,tileSize*1,"blue");
         Tile tile4_1 = new Tile(tileSize*4,tileSize*1,"blue");
-        //3 ROW
+        //3 ROW=============================================================
         Tile tile0_2 = new Tile(tileSize*0,tileSize*2,"green");
         Tile tile1_2 = new Tile(tileSize*1,tileSize*2,"blue");
         Tile tile2_2 = new Tile(tileSize*2,tileSize*2,"yellow");
         Tile tile3_2 = new Tile(tileSize*3,tileSize*2,"red");
         Tile tile4_2 = new Tile(tileSize*4,tileSize*2,"red");
-        //4 ROW
+        //4 ROW=============================================================
         Tile tile0_3 = new Tile(tileSize*0,tileSize*3,"yellow");
         Tile tile1_3 = new Tile(tileSize*1,tileSize*3,"red");
         Tile tile2_3 = new Tile(tileSize*2,tileSize*3,"green");
         Tile tile3_3 = new Tile(tileSize*3,tileSize*3,"blue");
         Tile tile4_3 = new Tile(tileSize*4,tileSize*3,"blue");
-        //5 ROW
+        //5 ROW=============================================================
         Tile tile0_4 = new Tile(tileSize*0,tileSize*4,"yellow");
         Tile tile1_4 = new Tile(tileSize*1,tileSize*4,"red");
         Tile tile2_4 = new Tile(tileSize*2,tileSize*4,"green");
@@ -77,25 +77,25 @@ public class GameGraphics extends JFrame{
         public void paintComponent(Graphics g) { // draws graphics, like the draw event in GMS2
             super.paintComponent(g);
 
-            ArrayList<Tile> tileList1 = new ArrayList<Tile>();
-            ArrayList<Tile> tileList2 = new ArrayList<Tile>();
-            ArrayList<Tile> tileList3 = new ArrayList<Tile>();
-            ArrayList<Tile> tileList4 = new ArrayList<Tile>();
-            ArrayList<Tile> tileList5 = new ArrayList<Tile>();
+            ArrayList<Tile> tileList1 = new ArrayList<Tile>(); // ROW 1
+            ArrayList<Tile> tileList2 = new ArrayList<Tile>(); // ROW 2
+            ArrayList<Tile> tileList3 = new ArrayList<Tile>(); // ROW 3
+            ArrayList<Tile> tileList4 = new ArrayList<Tile>(); // ROW 4
+            ArrayList<Tile> tileList5 = new ArrayList<Tile>(); // ROW 5
             ArrayList<ArrayList<Tile>> tileLists = new ArrayList<ArrayList<Tile>>();
 
             Font myFont = new Font("Dialog", Font.PLAIN, 50);
 
-            String[] typePattern1 = {"green", "green", "green", "green", "green"};
-            String[] typePattern2 = {"red", "green", "green", "green", "green"};
-            String[] typePattern3 = {"green", "green", "red", "green", "green"};
-            String[] typePattern4 = {"green", "green", "green", "red", "green"};
-            String[] typePattern5 = {"green", "green", "green", "green", "red"};
-            String[] typePattern6 = {"green", "red", "green", "green", "green"};
-            String[] typePattern7 = {"green", "red", "red", "green", "green"};
-            String[] typePattern8 = {"red", "green", "green", "green", "red"};
-            String[] typePattern9 = {"green", "green", "red", "red", "green"};
-            String[] typePattern10 = {"green", "red", "green", "green", "red"};
+            String[] typePattern1 =     {"green", "green", "green", "green", "green"};
+            String[] typePattern2 =     {"red", "green", "green", "green", "green"};
+            String[] typePattern3 =     {"green", "green", "red", "green", "green"};
+            String[] typePattern4 =     {"green", "green", "green", "red", "green"};
+            String[] typePattern5 =     {"green", "green", "green", "green", "red"};
+            String[] typePattern6 =     {"green", "red", "green", "green", "green"};
+            String[] typePattern7 =     {"green", "red", "red", "green", "green"};
+            String[] typePattern8 =     {"red", "green", "green", "green", "red"};
+            String[] typePattern9 =     {"green", "green", "red", "red", "green"};
+            String[] typePattern10 =    {"green", "red", "green", "green", "red"};
 
             tileList1.add(tile0_0);
             tileList1.add(tile1_0);
@@ -135,10 +135,9 @@ public class GameGraphics extends JFrame{
 
             Graphics2D g2 = (Graphics2D) g; // Graphics2D class extends the Grapgics class to provide more sophisticated control over geometrz, coordinta transformations, color management, and text layout.
             setBackground((Color.BLACK)); // background color of the window
-            //g2.setColor(Color.BLACK); // guess what is sets the color of the graphic
 
             int pattern = logic.pattern;
-
+            
             switch (pattern) {
                 case 1:
                     logic.setTileListTypes(tileList1, typePattern1);
@@ -279,14 +278,11 @@ public class GameGraphics extends JFrame{
             }
 
 
-
             g2.setFont(myFont);
             g2.setColor(Color.blue);
             g2.drawString("Points: " + logic.points,702,52);
             g2.setColor(Color.WHITE);
             g2.drawString("Points: " + logic.points,700,50);
-
-
 
             g2.dispose(); // Dispose of this graphics context and release any system resources that is it using
         }

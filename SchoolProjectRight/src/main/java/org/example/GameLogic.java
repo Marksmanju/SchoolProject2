@@ -47,18 +47,8 @@ public class GameLogic {
         enemy = new Enemy(800,100,"boy_down_2.png");
 
         player = new Player(0, 0, "boy_down_1.png");
-        do{
-            do {
-                pointX = random.nextInt(5);
-                pointY = random.nextInt(5);
-            } while (pointX == player.getX() && pointY == player.getY());
-            do {
-                point2X = random.nextInt(5);
-                point2Y = random.nextInt(5);
-            } while (point2X == player.getX() && point2Y == player.getY());
-        }while(pointX == point2X && pointY == point2Y);
-        point = new Point(128 * pointX, 128 * pointY, "boy_up_1.png");
-        point2 = new Point(128 * point2X, 128 * point2Y, "boy_left_2.png");
+
+        pointInitiliaze();
 
         System.out.println("Game is initilized");
 
@@ -171,5 +161,19 @@ public class GameLogic {
             }
         return type;
     }
-//owa
+
+    public void pointInitiliaze(){
+        do{
+            do {
+                pointX = random.nextInt(5);
+                pointY = random.nextInt(5);
+            } while (pointX == player.getX() && pointY == player.getY());
+            do {
+                point2X = random.nextInt(5);
+                point2Y = random.nextInt(5);
+            } while (point2X == player.getX() && point2Y == player.getY());
+        }while(pointX == point2X && pointY == point2Y);
+        point = new Point(128 * pointX, 128 * pointY, "boy_up_1.png");
+        point2 = new Point(128 * point2X, 128 * point2Y, "boy_left_2.png");
+    }
 }
