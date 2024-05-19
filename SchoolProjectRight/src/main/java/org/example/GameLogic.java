@@ -1,11 +1,11 @@
 package org.example;
 
-import org.example.objects.Enemy;
+import org.example.objects.*;
 import org.example.objects.Point;
-import org.example.objects.Player;
-import org.example.objects.Tile;
 
 import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
@@ -13,10 +13,11 @@ import java.util.Random;
 public class GameLogic {
     int FPS = 60;
     public Player player;
+
     public Point point,point2;
     private Random random = new Random();
     public Enemy enemy;
-
+    public GameButton button;
     public Game game;
     public int pattern;
     public int points;
@@ -25,6 +26,8 @@ public class GameLogic {
 
     private int point2X = random.nextInt(5);
     private int point2Y = random.nextInt(5);
+    public int gameLevel;
+    private String url;
 
     //private KeyManager keyManager;
 
@@ -36,6 +39,9 @@ public class GameLogic {
         //player = new Player(10, 10);
         this.game = game;
 
+        this.gameLevel = 0;
+
+        this.button = new GameButton(500,100,"yellow.png","none");
         this.player = null;
         this.point = null;
         this.enemy = null;
@@ -44,9 +50,14 @@ public class GameLogic {
     }
 
     public void initialize(){
+        url = "boy_down_1.png";
         enemy = new Enemy(800,100,"boy_down_2.png");
 
-        player = new Player(0, 0, "boy_down_1.png");
+        player = new Player(0, 0, url);
+
+        button = new GameButton(650,250,"yellow.png","attack2");
+
+        gameLevel = 1;
 
         pointInitiliaze();
 
@@ -58,10 +69,8 @@ public class GameLogic {
 
     public void update(){
 
-
         if(game.upPressed){
             player.direction = "up";
-            //player.getCoord().y -= 3; // Update y-coordinate for moving up
         }
         else if(game.downPressed){
             player.direction = "down";
@@ -75,6 +84,7 @@ public class GameLogic {
             player.direction = "right";
             //player.getCoord().x += 3; // Update x-coordinate for moving right
         }
+
 
         if(point.isCollided(player.getRectangle())){
             do {
@@ -106,10 +116,12 @@ public class GameLogic {
             points += 100;
             pattern = makePattern();
         }
+        switch (gameLevel){
+            case 1 -> {enemy.setMaxHp(50);}
+            case 2 -> enemy.setMaxHp(100);
+            case 3 -> enemy.setMaxHp(150);
+        }
 
-        /*if(game.second){
-            pattern = makePattern();
-        }*/
 
 
     }
@@ -175,5 +187,29 @@ public class GameLogic {
         }while(pointX == point2X && pointY == point2Y);
         point = new Point(128 * pointX, 128 * pointY, "boy_up_1.png");
         point2 = new Point(128 * point2X, 128 * point2Y, "boy_left_2.png");
+    }
+    public void movePlayer(String direction, int steps){
+        switch (direction){
+            case "up" -> {
+                if(!((player.getY() - 96) < 0)){
+                    player.setY(player.getY() - steps);
+                }
+            }
+            case "left" -> {
+                if(!((player.getX() - 96) < 0)){
+                    player.setX(player.getX() - steps);
+                }
+            }
+            case "right" -> {
+                if(!((player.getX() + 96) > 512)){
+                    player.setX(player.getX() + steps);
+                }
+            }
+            case "down" -> {
+                if(!((player.getY() + 96) > 512)){
+                    player.setY(player.getY() + steps);
+                }
+            }
+        }
     }
 }

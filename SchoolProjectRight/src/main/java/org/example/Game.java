@@ -13,12 +13,12 @@ import java.awt.event.MouseListener;
 // then press Enter. You can now see whitespace characters in your code.
 public class Game extends Thread{
     Thread gameThread;
-    public boolean upPressed, downPressed, leftPressed, rightPressed, ePressed;
+    public boolean upPressed, downPressed, leftPressed, rightPressed, ePressed, mousePressed;
     public boolean size;
 
     private GameLogic logic;
     public GameGraphics graphics;
-    private long lastPatternUpdateTime = System.nanoTime();
+    //private long lastPatternUpdateTime = System.nanoTime();
 
     public boolean second;
     //private Player player;
@@ -45,38 +45,23 @@ public class Game extends Thread{
                 if((code == KeyEvent.VK_W) || (code == KeyEvent.VK_UP)){
                     upPressed = true;
                     logic.player.setColor(Color.red);
-                    if(!((logic.player.getY() - 96) < 0)){
-                        logic.player.setY(logic.player.getY() - steps);
-                    }
-                    //logic.player.direction = "up";
-                    //logic.player.getCoord().y -= 10; // Update y-coordinate for moving up
+                    logic.movePlayer("up",steps);
+
                 }
                 if((code == KeyEvent.VK_S) || (code == KeyEvent.VK_DOWN)){
                     downPressed = true;
                     logic.player.setColor(Color.blue);
-                    if(!((logic.player.getY() + 96) > 512)){
-                        logic.player.setY(logic.player.getY() + steps);
-                    }
-                    //logic.player.direction = "down";
-                    //logic.player.getCoord().y += 10; // Update y-coordinate for moving up
+                    logic.movePlayer("down",steps);
                 }
                 if((code == KeyEvent.VK_A) || (code == KeyEvent.VK_LEFT)){
                     leftPressed = true;
                     logic.player.setColor(Color.yellow);
-                    if(!((logic.player.getX() - 96) < 0)){
-                        logic.player.setX(logic.player.getX() - steps);
-                    }
-                    //logic.player.direction = "left";
-                    //logic.player.getCoord().x -= 10; // Update y-coordinate for moving up
+                    logic.movePlayer("left",steps);
                 }
                 if((code == KeyEvent.VK_D) || (code == KeyEvent.VK_RIGHT)){
                     rightPressed = true;
                     logic.player.setColor(Color.GREEN);
-                    if(!((logic.player.getX() + 96) > 512)){
-                        logic.player.setX(logic.player.getX() + steps);
-                    }
-                    //logic.player.direction = "right";
-                    //logic.player.getCoord().x += 10; // Update y-coordinate for moving up
+                    logic.movePlayer("right",steps);
                 }
                 if(code == KeyEvent.VK_E){
                     size = !size;
@@ -98,6 +83,9 @@ public class Game extends Thread{
                 if((code == KeyEvent.VK_D) || (code == KeyEvent.VK_RIGHT)){
                     rightPressed = false;
                 }
+                if((code == KeyEvent.VK_E)){
+                    logic.enemy.setHp(logic.enemy.getHp() - 1);
+                }
 
 
             }
@@ -106,10 +94,43 @@ public class Game extends Thread{
             @Override
             public void mouseClicked(MouseEvent e) {
 
+
+
             }
 
             @Override
             public void mousePressed(MouseEvent e) {
+                int mouseX = e.getX();
+                int mouseY = e.getY();
+
+                // Get button bounds
+                int buttonX = logic.button.getX();
+                int buttonY = logic.button.getY();
+                int buttonWidth = graphics.tileSize*2; // Assuming you have a method to get width
+                int buttonHeight = graphics.tileSize*2;
+                switch (logic.button.getType()){
+                    case "attack" -> {if (mouseX >= buttonX && mouseX <= buttonX + buttonWidth && mouseY >= buttonY && mouseY <= buttonY + buttonHeight) {
+                        if(logic.points > 100)
+                        {
+                            logic.enemy.setHp(logic.enemy.getHp() - 1);
+                            logic.points -= 100;
+                        }
+                    }
+                    }
+                    case "attack2" -> {if (mouseX >= buttonX && mouseX <= buttonX + buttonWidth && mouseY >= buttonY && mouseY <= buttonY + buttonHeight) {
+                        if(logic.points >= 100)
+                        {
+                            logic.enemy.setHp(logic.enemy.getHp() - 2);
+                            logic.points -= 100;
+                        }
+                    }
+                    }
+                    case null, default -> {if (mouseX >= buttonX && mouseX <= buttonX + buttonWidth && mouseY >= buttonY && mouseY <= buttonY + buttonHeight){
+
+                    }
+
+                    }
+                }
 
             }
 
@@ -157,7 +178,7 @@ public class Game extends Thread{
                 graphics.render(logic);
                 delta--;
                 drawCount++;
-                if (second) {
+                /*if (second) {
                     //int pattern = logic.makePattern(); // Update the pattern
                     second = false;
                     lastPatternUpdateTime = currentTime; // Update the last update time
@@ -165,7 +186,7 @@ public class Game extends Thread{
                 long elapsedTimeSincePatternUpdate = currentTime - lastPatternUpdateTime;
                 if (elapsedTimeSincePatternUpdate >= 1_000_000_000) { // Check if one second has passed
                     second = true; // Set second to true to trigger the pattern update on the next iteration
-                }
+                }*/
 
             }
             if(timer >= 1000000000){

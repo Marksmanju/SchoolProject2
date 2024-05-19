@@ -19,6 +19,7 @@ public class GameGraphics extends JFrame{
 
     public final int scrWidth = tileSize * maxScrCol; // screen width,
     public final int scrHeight = tileSize * maxScrRow; // screen height,
+    public Button button;
 
 
 
@@ -27,7 +28,6 @@ public class GameGraphics extends JFrame{
         this.draw = new Draw();
         add(draw);
         this.logic = logic;
-
 
         setSize(scrWidth, scrHeight);
         setLocationRelativeTo(null); // sets location of the window. Null makes it in the middle of the screen
@@ -134,7 +134,7 @@ public class GameGraphics extends JFrame{
             tileLists.add(tileList5);
 
             Graphics2D g2 = (Graphics2D) g; // Graphics2D class extends the Grapgics class to provide more sophisticated control over geometrz, coordinta transformations, color management, and text layout.
-            setBackground((Color.BLACK)); // background color of the window
+            setBackground((Color.LIGHT_GRAY)); // background color of the window
 
             int pattern = logic.pattern;
             
@@ -283,6 +283,14 @@ public class GameGraphics extends JFrame{
             g2.drawString("Points: " + logic.points,702,52);
             g2.setColor(Color.WHITE);
             g2.drawString("Points: " + logic.points,700,50);
+            g2.setColor(Color.blue);
+            g2.drawString("EnemyHp: " + logic.enemy.getHp(),752,102);
+            g2.setColor(Color.WHITE);
+            g2.drawString("EnemyHp: " + logic.enemy.getHp(),750,100);
+
+            g2.drawImage(logic.button.getImage(), logic.button.getX(),logic.button.getY(),tileSize*2,tileSize,null);
+            g2.setColor(Color.BLACK);
+            g2.drawString(logic.button.getType(),logic.button.getX()+50,logic.button.getY()+80);
 
             g2.dispose(); // Dispose of this graphics context and release any system resources that is it using
         }
