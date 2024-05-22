@@ -18,6 +18,7 @@ public class Game extends Thread{
 
     private GameLogic logic;
     public GameGraphics graphics;
+    public int subtract = 1;
     //private long lastPatternUpdateTime = System.nanoTime();
 
     public boolean second;
@@ -84,7 +85,7 @@ public class Game extends Thread{
                     rightPressed = false;
                 }
                 if((code == KeyEvent.VK_E)){
-                    logic.enemy.setHp(logic.enemy.getHp() - 1);
+                    logic.gameLevel -= 1;
                 }
 
 
@@ -104,32 +105,15 @@ public class Game extends Thread{
                 int mouseY = e.getY();
 
                 // Get button bounds
-                int buttonX = logic.button.getX();
-                int buttonY = logic.button.getY();
-                int buttonWidth = graphics.tileSize*2; // Assuming you have a method to get width
-                int buttonHeight = graphics.tileSize*2;
-                switch (logic.button.getType()){
-                    case "attack" -> {if (mouseX >= buttonX && mouseX <= buttonX + buttonWidth && mouseY >= buttonY && mouseY <= buttonY + buttonHeight) {
-                        if(logic.points > 100)
-                        {
-                            logic.enemy.setHp(logic.enemy.getHp() - 1);
-                            logic.points -= 100;
-                        }
-                    }
-                    }
-                    case "attack2" -> {if (mouseX >= buttonX && mouseX <= buttonX + buttonWidth && mouseY >= buttonY && mouseY <= buttonY + buttonHeight) {
-                        if(logic.points >= 100)
-                        {
-                            logic.enemy.setHp(logic.enemy.getHp() - 2);
-                            logic.points -= 100;
-                        }
-                    }
-                    }
-                    case null, default -> {if (mouseX >= buttonX && mouseX <= buttonX + buttonWidth && mouseY >= buttonY && mouseY <= buttonY + buttonHeight){
-
-                    }
-
-                    }
+                if(logic.gameLevel > 0) {
+                    logic.getButtonInfo(logic.button, mouseX, mouseY);
+                    logic.getButtonInfo(logic.button2, mouseX, mouseY);
+                    logic.getButtonInfo(logic.button3, mouseX, mouseY);
+                }else if(logic.gameLevel == 0){
+                    logic.getButtonMenuInfo(logic.menuButton1, mouseX, mouseY);
+                    logic.getButtonMenuInfo(logic.menuButton2, mouseX, mouseY);
+                }else if(logic.gameLevel < 0){
+                    logic.getButtonMenuInfo(logic.buttonGameOver, mouseX, mouseY);
                 }
 
             }
@@ -178,16 +162,6 @@ public class Game extends Thread{
                 graphics.render(logic);
                 delta--;
                 drawCount++;
-                /*if (second) {
-                    //int pattern = logic.makePattern(); // Update the pattern
-                    second = false;
-                    lastPatternUpdateTime = currentTime; // Update the last update time
-                }
-                long elapsedTimeSincePatternUpdate = currentTime - lastPatternUpdateTime;
-                if (elapsedTimeSincePatternUpdate >= 1_000_000_000) { // Check if one second has passed
-                    second = true; // Set second to true to trigger the pattern update on the next iteration
-                }*/
-
             }
             if(timer >= 1000000000){
                 System.out.println("game loop is funcntional"); // debug message to check if game loop works
@@ -195,10 +169,12 @@ public class Game extends Thread{
                 System.out.println("Player Position: " + logic.getPlayer().getCoord().x +" and "+ logic.getPlayer().getCoord().y + " direction " + logic.getPlayer().getDirection());
                 drawCount = 0;
                 timer = 0;
+
+                if (logic.totalTime > 0 && logic.gameLevel != 0) {
+                    logic.totalTime -= subtract;
+                }
             }
-
         }
-
     }
 
     public static void main(String[] args) {

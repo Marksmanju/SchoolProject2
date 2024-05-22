@@ -10,8 +10,8 @@ public class Player extends GameObject {
     public BufferedImage up1, up2, down1, down2, left1,left2,right1, right2; // what images are loaded
     public Color color;
 
-    public Player(int x,int y,String url) {
-        super(x,y,url);
+    public Player(int x,int y,String url, String url2) {
+        super(x,y,url,url2);
         direction = "down";
     }
 
@@ -98,4 +98,5 @@ public class Player extends GameObject {
     public void setActualX(){
         setX(getX() + 20);
     }
+
 }

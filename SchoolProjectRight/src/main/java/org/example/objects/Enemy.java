@@ -3,8 +3,8 @@ package org.example.objects;
 public class Enemy extends GameObject{
     private int hp;
     private int maxHp;
-    public Enemy(int x, int y,String url) {
-        super(x,y,url);
+    public Enemy(int x, int y,String url, String url2) {
+        super(x,y,url,url2);
         maxHp = 50;
         hp = maxHp;
     }
